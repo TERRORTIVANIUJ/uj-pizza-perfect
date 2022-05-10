@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: aquamarine;
+        }
+    .small-img{
+        width: 170px;
+        border: 3px solid black ;
+    }
+    .Mediu-img{
+        width: 200px;
+        border: 3px solid black ;
+    }
+    .Large-img{
+        width: 225px;
+        border: 3px solid black ;
+    }
+    @media (min-width: 760px){
+        .PizzaLayout {
+            display: flex;
+        }
+    }
+    .Pizza1{
+        background-color: orange;
+        margin: 1em;
+    }
+    .Pizza2 {
+        background-color: orangered;
+        margin: 1em;
+    }
+    .Pizza3 {
+        background-color: crimson;
+        margin: 1em;
+    }
+    .Pizza-Details {
+        background-color: yellowgreen;
+        margin: 1em;
+        display: flex;
+    }
+    h1 {text-align: center;}
+    .Pizza-Details1{text-align: left; flex: 1;}
+    .Pizza-Details2{text-align: ; flex: 1;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Perfect Pizza</h1>
+        <div class="PizzaLayout">
+            <!--small Pizza-->
+            <div class="Pizza1">
+                <img class="small-img" src="https://pbs.twimg.com/media/FINFcrxUYAA5esW.jpg">
+                <h2>Small Pizza</h2>
+                <h3>R78.99</h3>
+                small margeritha pizza with 3 toppings max. 2 or less meat topping. 3 or less other toppings.
+            </div>
+            <!--Mediu Pizza-->
+            <div class="Pizza2">
+                <img class="Mediu-img" src="https://pbs.twimg.com/media/FINFcrxUYAA5esW.jpg">
+                <h2>Medium Pizza</h2>
+                <h3>R78.99</h3>
+                medium margeritha pizza with 3 toppings max. 2 or less meat topping. 3 or less other toppings.
+            </div>
+            <!--Large Pizza-->
+            <div class="Pizza3">
+                <img class="Large-img" src="https://pbs.twimg.com/media/FINFcrxUYAA5esW.jpg">
+                <h2>Large Pizza</h2>
+                <h3>R78.99</h3>
+                large margeritha pizza with 3 toppings max. 2 or less meat topping. 3 or less other toppings.
+            </div>
+        </div>
+        <div class="Pizza-Details">
+            <div class="Pizza-Details1">
+            Contact us at: (021)-541-1000 <br>
+            Twitter<br>
+            /fb<br>
+            /insta<br>
+            @perfectpizza<br>
+            </div>
+            <div class="Pizza-Details2">
+                Pizza Plaza<br>
+                Dough Road<br>
+                Base Town<br>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
