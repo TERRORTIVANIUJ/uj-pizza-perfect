@@ -4,15 +4,18 @@ body {
 }
 .small-img{
 width: 170px;
-border: 3px solid black ;
+border-radius: 100%;
+margin: 0 25% 0 25%;
 }
 .Mediu-img{
 width: 200px;
-border: 3px solid black ;
+border-radius: 100%;
+margin: 0 25% 0 25%;
 }
 .Large-img{
 width: 225px;
-border: 3px solid black ;
+border-radius: 100%;
+margin: 0 25% 0 25%;
 }
 @media (min-width: 760px){
 .PizzaLayout {
@@ -22,14 +25,17 @@ border: 3px solid black ;
 .Pizza1{
 background-color: orange;
 margin: 1em;
+border-radius: 2.5em;
 }
 .Pizza2 {
 background-color: orangered;
 margin: 1em;
+border-radius: 2.5em;
 }
 .Pizza3 {
 background-color: crimson;
 margin: 1em;
+border-radius: 1.5em;
 }
 .Pizza-Details {
 background-color: yellowgreen;
@@ -39,3 +45,119 @@ display: flex;
 h1 {text-align: center;}
 .Pizza-Details1{text-align: left; flex: 1;}
 .Pizza-Details2{text-align: ; flex: 1;}
+ 
+/* cart styling*/
+
+.PizzaHD1 {
+    padding: 1em;
+    background-color: whitesmoke;
+    display: flex;
+    border-radius: 3.5em;
+}
+
+.PizzaH1, .PizzaH2, .PizzaH3 {
+     width: 30px;
+}
+.PizzaH4 {
+    width: 44px;
+}
+
+
+
+.cart-box {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.cart1 {
+    width: 25px;
+}
+
+.cart {
+    background-color: whitesmoke;
+    padding: 1em;
+    width: 100%;
+    border-radius: 3.5em;
+    margin: -9em 0 0 0;
+}
+
+@media (min-width: 1024px) {
+    .cart {
+        width: 50%;
+    }
+
+}
+
+table {
+    width: 100%;;
+}
+
+th,
+td {
+    text-align: center;
+    vertical-align: bottom;
+    padding: 10px;
+    border: 1px solid gainsboro;
+    border-radius: 3.5em;
+}
+
+.QtyBtn {
+    border: 1px solid gray;
+    border-radius: 50%;
+}
+
+.paymentSec {
+    display: flex;
+}
+
+.input {
+    margin: 1em;
+    border-radius: 5em;
+    border: 2px solid gainsboro;
+}
+.CartBuyBtn {
+    width: 30px;
+}
+.PaymentBtn {
+    margin: 1em 0 0 -1em;
+    height: 3.4em;
+    background-color: yellowgreen;
+    border-radius: 1.5em;
+    border: 2px solid gainsboro;
+}
+
+.Himg {
+    flex: 3;
+}
+
+.CartOpeningBtn {
+    flex: 1
+}
+
+
+
+.message {
+    padding: 1em;
+    font-weight: bold;
+    background-color: gold;
+}
+
+.input {
+    padding: 1em;
+}
+
+.AddBtn {
+    border: 1px solid grey;
+    padding: 1em 0em 1em 0em;
+    width: 5em;
+    background-color: yellowgreen;
+    color: grey;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 1.5em;
+}
+p {
+    width: 95%;
+    margin: 1em 1.5% 5% 3%;
+}
