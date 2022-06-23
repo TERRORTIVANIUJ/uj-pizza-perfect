@@ -44,7 +44,7 @@ display: flex;
 }
 h1 {text-align: center;}
 .Pizza-Details1{text-align: left; flex: 1;}
-.Pizza-Details2{text-align: ; flex: 1;}
+.Pizza-Details2{text-align:center}
  
 /* cart styling*/
 
@@ -62,7 +62,27 @@ h1 {text-align: center;}
     width: 44px;
 }
 
+.OpenImgBtn{
+    width: 30px;
+}
+.OpenBtn, .CloseBtn {
+    border: 2px solid gray;
+    border-radius: 1em;
+    color: gray;
+}
 
+.TotalItmHolder {
+    width: 50%;
+    border: 2px solid gray;
+    border-radius: 0.4em;
+    color: gray;
+    margin: 0.3em 0 0 0;
+}
+
+.ItmQty {
+    width: 100%;
+    margin: 0 0 0 0.3em;
+}
 
 .cart-box {
     display: flex;
@@ -110,12 +130,18 @@ td {
 .paymentSec {
     display: flex;
 }
+.PaymentAmout {
+    margin: 1.5em 0 0 0;
+}
 
 .input {
-    margin: 1em;
-    border-radius: 5em;
+    margin: 0 1em 0 0;
+    padding: 1em 5em 1em ;
     border: 2px solid gainsboro;
+    border-radius: 1.5em;
+    background-color: white;
 }
+
 .CartBuyBtn {
     width: 30px;
 }
@@ -125,6 +151,7 @@ td {
     background-color: yellowgreen;
     border-radius: 1.5em;
     border: 2px solid gainsboro;
+    color: gainsboro;
 }
 
 .Himg {
@@ -133,18 +160,6 @@ td {
 
 .CartOpeningBtn {
     flex: 1
-}
-
-
-
-.message {
-    padding: 1em;
-    font-weight: bold;
-    background-color: gold;
-}
-
-.input {
-    padding: 1em;
 }
 
 .AddBtn {
@@ -160,4 +175,95 @@ td {
 p {
     width: 95%;
     margin: 1em 1.5% 5% 3%;
+}
+
+button:hover {
+    background-color: brown;
+    color: aqua;
+}
+
+.PizzaQty {
+    border: 1px solid gray;
+    width: 100%;
+    border-radius: 0.5em;
+    margin: 0 0 0 1em;
+}
+
+.PizzaSize {
+    text-align: left;
+}
+
+.paymentH {
+    text-align: center;
+}
+
+/*---------PaymentStyle-----------------*/
+
+.Payments {
+    background-color: whitesmoke;
+    padding: 1em;
+    width: 50%;
+    border-radius: 3.5em;
+    margin: -9em 0 0 0;
+}
+
+.paymentOpt {
+    background-color: whitesmoke;
+    text-align: center;
+}
+
+.PayOptBtn {
+    border: 2px solid gray;
+    border-radius: 1em;
+    color: gray;
+    margin: 1em;
+}
+.Banks{
+    background-color: whitesmoke;
+}
+
+.BanksImg {
+    width: 250px;
+    height: 70px;
+    text-align: center;
+    background-color: whitesmoke;
+}
+
+.cardPayments {
+    background-color: whitesmoke;
+    text-align: center;
+}
+
+.accountNumberHolder {
+    margin: 0.5em;
+}
+
+.inputAccNumber {
+    width: 53.3%;
+    margin: 0 21% 0 21%;
+}
+
+.CardPayingBtn {
+    margin: 0.5em;
+    height: 3em;
+    width: 5em;
+    background-color: yellowgreen;
+    border-radius: 0.5em;
+    border: 2px solid gainsboro;
+}
+.PayButton {
+    text-align: left;
+    width: 57%;
+    margin: 0 21% 0 22.4%;
+}
+
+.message {
+    padding: 1em;
+    font-weight: bold;
+    background-color: gold;
+    color: black;
+    width: 50%;
+    margin: 0 30% 0 23.5%;
+    border-radius: 1.5em;
+    text-align: center;
 }
