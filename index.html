@@ -14,7 +14,8 @@
                                       showPayment : false,
                                       showPaymentOpt: true,
                                       showCardPayments: false,
-                                      showMessage : false,
+                                      showCashMessage : false,
+                                      showCardMessage: false,
                                       PlaceOrderBtn: false,
 
                                       smallpizzaTotal : 0.0,
@@ -63,17 +64,22 @@
                                                         return this.smallpizzaQty + this.mediumpizzaQty + this.largepizzaQty
                                                      },
 
-                                        paymentMessage:'',
-                                        amount : 0,
-
                                         makepayment() {
-                                            if ( this.TotalItems > 0){
-                                                this.paymentMessage = 'Order Placed, on the way';
+                                            if ( this.TotalItems() > 0){
+                                                return 'Order Placed, on the way';
                                             
                                             } else {
-                                               this.paymentMessage = 'No Order';
+                                                return 'No Order';
                                             }},
-                                        
+
+                                        makepaymentCard() {
+                                                if ( this.Payment_amount() > 0){
+                                                    return 'Payment Successfully';
+                                                
+                                                } else {
+                                                    return 'Payment Fail!, insufficient Fund';
+                                                }},
+                                                
                                     
                                     
                                     
@@ -212,7 +218,7 @@
                 </div>
 
                 <div x-show="PlaceOrderBtn">
-                    <button class="PayOptBtn" x-on:click="showMessage=true" x-on:click="makepayment" >
+                    <button class="PayOptBtn" x-on:click="showCashMessage=true, makepayment" >
                         PlaceOrder
                     </button> 
                 </div>
@@ -241,16 +247,28 @@
     
                     <!--PayButton-->
                     <div class="PayButton">
-                        <button class="CardPayingBtn" x-on:click="showMessage=true, showCardPayments=false, showPaymentOpt=false, makepayment">
+                        <button class="CardPayingBtn" x-on:click="showCardMessage=true, 
+                                                                  showCardPayments=false, 
+                                                                  showPaymentOpt=false, 
+                                                                  makepaymentCard">
                             Pay
                         </button>
                     </div>
                 </div>
     
                 <!--Message-->
-                <div class="message" x-show="showMessage" >
-                    <div x-text="paymentMessage"></div>
+                <!---Cash Payment Message-->
+
+                <div class="message" x-show="showCashMessage" >
+                    <div x-text="makepayment()"></div>
                 </div>
+
+                <!--Card Payment Message-->
+
+                <div class="message" x-show="showCardMessage" >
+                    <div x-text="makepaymentCard()"></div>
+                </div>
+
             </div>
         </div>
 
