@@ -24,6 +24,7 @@
                                       mediumpizzaQty:  0,
                                       largepizzaTotal : 0.0,
                                       largepizzaQty : 0,
+                                      Amount : 0,
                                       
                                       Buyingsmallpizza() {
                                                         this.smallpizzaTotal += 29.99; 
@@ -65,11 +66,21 @@
                                                      },
 
                                         makepayment() {
-                                            if ( this.TotalItems() > 0){
-                                                return 'Order Placed, on the way';
+                                            if (!this.Amount){
+                                                return 'Enter the amount';
+                                            }
+
+                                            if ( this.Amount >= this.Payment_amount()){
+                                                return 'Payment Successfully!';
+
+                                                setTimeout(() => {
+                                                    return showPayment = false;
+                                                    return Rest();
+                                                },1000);
                                             
-                                            } else {
-                                                return 'No Order';
+                                            }
+                                            else {
+                                                return 'Payment Fail!';
                                             }},
 
                                         makepaymentCard() {
@@ -79,7 +90,16 @@
                                                 } else {
                                                     return 'Payment Fail!, insufficient Fund';
                                                 }},
-                                                
+                                        
+                                        Rest() {
+                                            this.smallpizzaTotal = 0.0;
+                                            this.smallpizzaQty = 0;  
+                                            this.mediumpizzaTotal = 0.0;
+                                            this.mediumpizzaQty = 0;
+                                            this.largepizzaTotal = 0.0;
+                                            this.largepizzaQty = 0;
+                                            this.Amount = 0;
+                                        },        
                                     
                                     
                                     
@@ -218,6 +238,8 @@
                 </div>
 
                 <div x-show="PlaceOrderBtn">
+                    <label  for="Amount">Amount</label>
+                    <input type="text" x-model="Amount" id="Amount">
                     <button class="PayOptBtn" x-on:click="showCashMessage=true, makepayment" >
                         PlaceOrder
                     </button> 
