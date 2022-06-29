@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<link rel="stylesheet" href="style.css">
-<script src="//unpkg.com/alpinejs" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
 
 </head>
+
 <body>
     <div class="container" x-data="{  showCart: false,
                                       showPayment : false,
@@ -16,6 +18,7 @@
                                       showCardPayments: false,
                                       showCashMessage : false,
                                       showCardMessage: false,
+                                      showCard_Pay_Amount: false,
                                       PlaceOrderBtn: false,
 
                                       smallpizzaTotal : 0.0,
@@ -72,24 +75,25 @@
 
                                             if ( this.Amount >= this.Payment_amount()){
                                                 return 'Payment Successfully!';
-
-                                                setTimeout(() => {
-                                                    return showPayment = false;
-                                                    return Rest();
-                                                },1000);
                                             
                                             }
                                             else {
                                                 return 'Payment Fail!';
                                             }},
 
-                                        makepaymentCard() {
-                                                if ( this.Payment_amount() > 0){
-                                                    return 'Payment Successfully';
-                                                
-                                                } else {
-                                                    return 'Payment Fail!, insufficient Fund';
-                                                }},
+                                        ClearingCart(){
+                                            setTimeout(() => {
+                                                this.showCart = false;
+                                                this.showPayment = false;
+                                                this.showCardPayments = false;
+                                                this.showCashMessage = false;
+                                                this.showCardMessage = false;
+                                                this.showCard_Pay_Amount = false;
+                                                this.showPaymentOpt = true;
+                                                this.PlaceOrderBtn = false;
+                                                this.Rest();
+                                            }, 3000);
+                                        },
                                         
                                         Rest() {
                                             this.smallpizzaTotal = 0.0;
@@ -103,20 +107,20 @@
                                     
                                     
                                     
-                                    }" >
+                                    }">
         <!--------------------Pizza Cart--------------------------------->
 
-        <div class="PizzaHD1"  >
+        <div class="PizzaHD1">
             <div class="Himg">
                 <h1>Perfect Pizza</h1>
-        
-                <img  class="PizzaH1"  src="pizza1.png" alt="">
-                <img  class="PizzaH2"  src="pizza2.png" alt="">
-                <img  class="PizzaH3"  src="pizza3.png" alt="">
-                <img  class="PizzaH4"  src="pizza4.png" alt="">
+
+                <img class="PizzaH1" src="pizza1.png" alt="">
+                <img class="PizzaH2" src="pizza2.png" alt="">
+                <img class="PizzaH3" src="pizza3.png" alt="">
+                <img class="PizzaH4" src="pizza4.png" alt="">
             </div>
-        
-            <div class="CartOpeningBtn" >
+
+            <div class="CartOpeningBtn">
                 <button class="OpenBtn" x-on:click="showCart=true">
 
                     <img class="OpenImgBtn" src="cart1.png" width="100">
@@ -134,44 +138,46 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="cart-box">
-            <div class="cart" x-show="showCart" >
+            <div class="cart" x-show="showCart">
                 <div>
                     <button class="CloseBtn" x-on:click="showCart=false">
                         <img class="OpenImgBtn" src="cart1.png" width="100">
                         Close Cart
                     </button>
                 </div>
-            
+
                 <div class="">
                     <h2>Cart
                         <img class="cart1" src="cart1.png">
                     </h2>
                 </div>
-                
+
                 <table>
                     <!--FIRST ROW-->
                     <tr x-show="smallpizzaQty > 0">
                         <td class="PizzaSize">Small Pizza</td>
                         <td>
-                            <button class="QtyBtn" x-on:click="Buyingsmallpizza()">+</button> 
-                            <button x-show="smallpizzaQty > 0" class="QtyBtn" x-on:click="Clearingsmallpizza()">-</button>
+                            <button class="QtyBtn" x-on:click="Buyingsmallpizza()">+</button>
+                            <button x-show="smallpizzaQty > 0" class="QtyBtn"
+                                x-on:click="Clearingsmallpizza()">-</button>
                             <span class="PizzaQty" x-text="smallpizzaQty"></span>
                         </td>
-                        <td >
+                        <td>
                             R<span x-text="smallpizzaTotal.toFixed(2)"></span>
                         </td>
                     </tr>
                     <!--SECOND ROW-->
-                    <tr x-show="mediumpizzaQty > 0" >
+                    <tr x-show="mediumpizzaQty > 0">
                         <td class="PizzaSize">Medium Pizza</td>
                         <td>
-                            <button class="QtyBtn" x-on:click="Buyingmediumpizza()">+</button> 
-                            <button x-show="mediumpizzaQty > 0"  class="QtyBtn" x-on:click="Clearingmediumpizza()">-</button>
-                            <span class="PizzaQty" x-text="mediumpizzaQty"></span>                
+                            <button class="QtyBtn" x-on:click="Buyingmediumpizza()">+</button>
+                            <button x-show="mediumpizzaQty > 0" class="QtyBtn"
+                                x-on:click="Clearingmediumpizza()">-</button>
+                            <span class="PizzaQty" x-text="mediumpizzaQty"></span>
                         </td>
-                        <td >
+                        <td>
                             R<span x-text="mediumpizzaTotal.toFixed(2)"></span>
                         </td>
                     </tr>
@@ -179,19 +185,20 @@
                     <tr x-show="largepizzaQty > 0">
                         <td class="PizzaSize">Large Pizza</td>
                         <td>
-                            <button class="QtyBtn" x-on:click="Buyinglargepizza()">+</button> 
-                            <button x-show="largepizzaQty > 0"  class="QtyBtn" x-on:click="Clearinglargepizza()">-</button>
-                            <span class="PizzaQty" x-text="largepizzaQty"></span>                
+                            <button class="QtyBtn" x-on:click="Buyinglargepizza()">+</button>
+                            <button x-show="largepizzaQty > 0" class="QtyBtn"
+                                x-on:click="Clearinglargepizza()">-</button>
+                            <span class="PizzaQty" x-text="largepizzaQty"></span>
                         </td>
-                        <td >
+                        <td>
                             R<span x-text="largepizzaTotal.toFixed(2)"></span>
                         </td>
                     </tr>
-                   <!-- <tr>
+                    <!-- <tr>
                         <td colspan="2">Total</td>
                         <td x-text="cartTotal"></td>
                     </tr> -->
-                    
+
                     <!--FOURTH ROW-->
                     <tr>
                         <td colspan="3">
@@ -211,7 +218,7 @@
                                     </button>
                                 </div>
                             </div>
-            
+
                         </td>
                     </tr>
                 </table>
@@ -224,9 +231,8 @@
                 <div class="paymentOpt" x-show="showPaymentOpt">
                     <h1 class="">Payment</h1>
                     <!--CashPaymenyButton-->
-                    <button class="PayOptBtn"
-                    x-on:click="showPaymentOpt=false ,PlaceOrderBtn=true">
-                    Cash
+                    <button class="PayOptBtn" x-on:click="showPaymentOpt=false ,PlaceOrderBtn=true">
+                        Cash
                     </button>
 
 
@@ -238,11 +244,11 @@
                 </div>
 
                 <div x-show="PlaceOrderBtn">
-                    <label  for="Amount">Amount</label>
+                    <label for="Amount">Amount</label>
                     <input type="text" x-model="Amount" id="Amount">
-                    <button class="PayOptBtn" x-on:click="showCashMessage=true, makepayment" >
+                    <button class="PayOptBtn" x-on:click="showCashMessage=true, makepayment, ClearingCart()">
                         PlaceOrder
-                    </button> 
+                    </button>
                 </div>
 
                 <!--CARD PAYMENTS-->
@@ -251,50 +257,56 @@
                     <h1 class="">Payment</h1>
                     <div class="BankDetails1">
                         <div class="Banks">
-                            <img  class="BanksImg" src="Banks logos.jpg">
+                            <img class="BanksImg" src="Banks logos.jpg">
                         </div>
                         <input type="text" placeholder="Bank Name">
                         <input type="text" placeholder="Account Holder">
                     </div>
-    
+
                     <div class="accountNumberHolder">
                         <input class="inputAccNumber" type="text" placeholder="Account Number">
                     </div>
-    
+
                     <!--Banking Details2-->
                     <div class="BankDetails1">
                         <input type="text" placeholder="ExpDate">
                         <input type="text" placeholder="CVV">
                     </div>
-    
+
                     <!--PayButton-->
                     <div class="PayButton">
-                        <button class="CardPayingBtn" x-on:click="showCardMessage=true, 
-                                                                  showCardPayments=false, 
-                                                                  showPaymentOpt=false, 
-                                                                  makepaymentCard">
-                            Pay
+                        <button class="CardPayingBtn" x-on:click="showCardPayments= false,
+                                                                  showCard_Pay_Amount= true">
+                            ADD CARD
                         </button>
                     </div>
                 </div>
-    
+
+                <div class="EnteringPayment" x-show="showCard_Pay_Amount">
+                    <label for="Amount">Amount</label>
+                    <input type="text" x-model="Amount" id="Amount">
+                    <button class="CardPayingBtn" x-on:click="makepayment, ClearingCart(), showCardMessage = true">
+                        Pay
+                    </button>
+                </div>
+
                 <!--Message-->
                 <!---Cash Payment Message-->
 
-                <div class="message" x-show="showCashMessage" >
+                <div class="message" x-show="showCashMessage">
                     <div x-text="makepayment()"></div>
                 </div>
 
                 <!--Card Payment Message-->
 
-                <div class="message" x-show="showCardMessage" >
-                    <div x-text="makepaymentCard()"></div>
+                <div class="message" x-show="showCardMessage">
+                    <div x-text="makepayment()"></div>
                 </div>
 
             </div>
         </div>
 
-        <!--------------------------------------PizzaPamphlet---------------------------------------------------->  
+        <!--------------------------------------PizzaPamphlet---------------------------------------------------->
 
         <div class="PizzaLayout">
             <!--small Pizza-->
@@ -314,7 +326,7 @@
                 <img class="Mediu-img" src="Pizza.jpg">
                 <h2>Medium Pizza</h2>
                 <h3>R55.99</h3>
-                <button class="AddBtn"  x-on:click="mediumpizzaTotal += 55.99, mediumpizzaQty += 1 ">
+                <button class="AddBtn" x-on:click="mediumpizzaTotal += 55.99, mediumpizzaQty += 1 ">
                     Add Cart
                 </button>
                 <p>
@@ -326,7 +338,7 @@
                 <img class="Large-img" src="Pizza.jpg">
                 <h2>Large Pizza</h2>
                 <h3>R78.99</h3>
-                <button class="AddBtn"  x-on:click="largepizzaTotal += 78.99, largepizzaQty += 1 ">
+                <button class="AddBtn" x-on:click="largepizzaTotal += 78.99, largepizzaQty += 1 ">
                     Add Cart
                 </button>
                 <p>
@@ -336,11 +348,11 @@
         </div>
         <div class="Pizza-Details">
             <div class="Pizza-Details1">
-            Contact us at: (021)-541-1000 <br>
-            Twitter<br>
-            /fb<br>
-            /insta<br>
-            @perfectpizza<br>
+                Contact us at: (021)-541-1000 <br>
+                Twitter<br>
+                /fb<br>
+                /insta<br>
+                @perfectpizza<br>
             </div>
             <div class="Pizza-Details2">
                 Pizza Plaza<br>
@@ -351,4 +363,5 @@
         </div>
     </div>
 </body>
+
 </html>
