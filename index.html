@@ -74,11 +74,11 @@
                                             }
 
                                             if ( this.Amount >= this.Payment_amount()){
-                                                return 'Payment Successfully!';
+                                                return 'Enjoy, your pizzas';
                                             
                                             }
                                             else {
-                                                return 'Payment Fail!';
+                                                return 'Sorry - that is not enough money!';
                                             }},
 
                                         ClearingCart(){
@@ -244,6 +244,11 @@
                 </div>
 
                 <div x-show="PlaceOrderBtn">
+                    <div>
+                        <strong>
+                            R<span x-text="Payment_amount().toFixed(2)"></span>
+                        </strong>
+                    </div>
                     <label for="Amount">Amount</label>
                     <input type="text" x-model="Amount" id="Amount">
                     <button class="PayOptBtn" x-on:click="showCashMessage=true, makepayment, ClearingCart()">
@@ -283,6 +288,11 @@
                 </div>
 
                 <div class="EnteringPayment" x-show="showCard_Pay_Amount">
+                    <div>
+                        <strong>
+                            R<span x-text="Payment_amount().toFixed(2)"></span>
+                        </strong>
+                    </div>
                     <label for="Amount">Amount</label>
                     <input type="text" x-model="Amount" id="Amount">
                     <button class="CardPayingBtn" x-on:click="makepayment, ClearingCart(), showCardMessage = true">
